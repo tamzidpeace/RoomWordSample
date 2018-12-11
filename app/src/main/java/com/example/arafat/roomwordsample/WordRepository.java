@@ -21,6 +21,9 @@ public class WordRepository {
         return mAllWords;
     }
 
+    // ei jaigay data insert hoise
+
+    // here is the works for async-task
 
     public void insert (Word word) {
         new insertAsyncTask(mWordDao).execute(word);

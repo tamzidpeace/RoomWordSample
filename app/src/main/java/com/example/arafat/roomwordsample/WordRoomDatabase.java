@@ -7,7 +7,6 @@ import android.arch.persistence.room.RoomDatabase;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.support.annotation.NonNull;
-import android.widget.Toast;
 
 
 @Database(entities = {Word.class}, version = 1)
@@ -49,18 +48,24 @@ public abstract class WordRoomDatabase extends RoomDatabase {
 
         private final WordDao mDao;
 
+        String[] words = {"dolphin", "crocodile", "cobra"};
+
         PopulateDbAsync(WordRoomDatabase db) {
+
             mDao = db.wordDao();
         }
 
         @Override
         protected Void doInBackground(final Void... params) {
 
-            /*mDao.deleteAll();
-            Word word = new Word("Hello");
-            mDao.insert(word);
-            word = new Word("World");
-            mDao.insert(word);*/
+            mDao.deleteAll();
+
+            // inserting data
+            for (int i = 0; i < words.length; i++) {
+                Word word = new Word(words[i]);
+                mDao.insert(word);
+            }
+
             return null;
         }
     }

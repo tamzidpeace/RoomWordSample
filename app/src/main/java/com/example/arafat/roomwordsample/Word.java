@@ -18,6 +18,9 @@ public class Word {
     }
 
     public String getWord() {
+
         return this.mWord;
     }
+
+
 }
